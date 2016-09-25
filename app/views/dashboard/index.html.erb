@@ -1,0 +1,9 @@
+<header>
+	<h1>By the Fleece of Magnus, <%= current_user.email %>!</h1>
+	<h2>Brought to you by Rails <%= Rails.version %></h2>
+</header>
+
+<section>
+	<p>Coming soon: stuff</p>
+	<%= link_to "Log the Fuggout", destroy_user_session_path, method: :delete %>
+</section>
