@@ -25,16 +25,15 @@
 
 	<section class="search-results">
 		<header><h1 class="h3">MUHFUGN RESULTS BIIIITCH</h1></header>
-		<%= render partial: "pager", locals: {keywords: @keywords, page: @page}%>
+		<%= render partial: "pager", locals: { keywords: @keywords, page: @page } %>
 		<ol class="list-group">
-			<% @customers.each do |customer| %>
-				<li class="list-group-item clearfix">
-					<h3 class="pull-right"><small class="text-uppercase">Jumped In </small><%= l customer.created_at.to_date %></h3>
-					<h2 class="h3"><%= customer.first_name %> <%= customer.last_name %> <small><%= customer.username %></small></h2>
-					<h4><%= customer.email %></h4>
-				</li>
-			<%end%>
+			<li class="list-group-item clearfix" ng-repeat="customer in customers">
+				<h3 class="pull-right"><small class="text-uppercase">Jumped In </small>{{ customer.created_at }}</h3>
+				<h2 class="h3"> {{ customer.first_name }} {{ customer.last_name }} <small> {{customer.username}} </small></h2>
+				<h4> {{customer.email}} </h4>
+			</li>
 		</ol>
 		<%= render partial: "pager", locals: {keywords: @keywords, page: @page}%>
 	</section>
+
 </article>
