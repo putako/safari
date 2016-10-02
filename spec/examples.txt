@@ -1,5 +1,6 @@
-example_id                        | status | run_time        |
---------------------------------- | ------ | --------------- |
-./spec/dummy_spec.rb[1:1]         | passed | 0.00238 seconds |
-./spec/dummy_spec.rb[1:2]         | failed | 0.10011 seconds |
-./spec/models/user_spec.rb[1:1:1] | passed | 0.06094 seconds |
+example_id                                    | status | run_time        |
+--------------------------------------------- | ------ | --------------- |
+./spec/dummy_spec.rb[1:1]                     | passed | 0.00238 seconds |
+./spec/dummy_spec.rb[1:2]                     | failed | 0.10011 seconds |
+./spec/features/angular_test_app_spec.rb[1:1] | passed | 11.47 seconds   |
+./spec/models/user_spec.rb[1:1:1]             | passed | 0.06094 seconds |
