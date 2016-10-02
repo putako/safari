@@ -13,7 +13,7 @@
 		</form>
 	</section>
 
-	<section class="search-results">
+	<section class="search-results" ng-if="customers.length > 0">
 		<header><h1 class="h3">MUHFUGN RESULTS BIIIITCH</h1></header>
 		<%= render partial: "pager", locals: { keywords: @keywords, page: @page } %>
 		<ol class="list-group">
