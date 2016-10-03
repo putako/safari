@@ -31,11 +31,18 @@ describe("CustomerSearchController", function(){
 			});
 		}));
 
-		beforeEach(function(){
+		/*
+		beforeEach(function(){ //this is to fake some real results, success for lotion
 			httpBackend.when('GET','/customers.json?keywords=bob&page=0').
 				respond(serverResults);
 		});
-		
+		*/
+		beforeEach(function(){ //this is to fake some real failures, success for hose
+			httpBackend.when('GET','/customers.json?keywords=bob&page=0').
+				respond(500,'Internal Server Error');
+			spyOn(window,"alert");
+		});
+
 		// tests go here
 		it("defaults to an empty customer list", function(){
 			expect(scope.customers).toEqualData([]);
@@ -45,6 +52,13 @@ describe("CustomerSearchController", function(){
 			scope.search("bob");
 			httpBackend.flush();
 			expect(scope.customers).toEqualData(serverResults);
+		});
+
+		it("gets the hose again", function(){
+			scope.search("bob");
+			httpBackend.flush();
+			expect(scope.customers).toEqualData([]);
+			expect(window.alert).toHaveBeenCalledWith("Dave's not here man. 500");
 		});
 	});
 });
