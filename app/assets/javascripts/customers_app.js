@@ -1,4 +1,22 @@
-var app = angular.module('customers',[]);
+var app = angular.module(
+	'customers',
+	[ // dependencies
+		'ngRoute',
+		'templates'
+	]
+);
+
+app.config([
+	"$routeProvider",
+	function($routeProvider){
+		//configure routes here
+		$routeProvider.when("/", // making the root a single page app (root relative to ngApp being called)
+		{
+			controller: "CustomerSearchController",
+			templateUrl: "customer_search.html"
+		});
+	}
+]);
 
 app.controller("CustomerSearchController",[
 					"$scope", "$http",

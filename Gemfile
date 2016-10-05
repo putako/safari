@@ -12,6 +12,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'bower-rails'
 gem 'faker'
+gem 'angular-rails-templates'
+gem 'sprockets'
 
 group :development, :test do
 	gem "rspec-rails", '~> 3.0'
