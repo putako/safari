@@ -2,6 +2,7 @@ var app = angular.module(
 	'customers',
 	[ // dependencies
 		'ngRoute',
+		'ngResource',
 		'templates'
 	]
 );
@@ -63,18 +64,10 @@ app.controller("CustomerSearchController",[
 ]);
 
 app.controller("CustomerDetailController",
-			["$scope", "$http", "$routeParams",
-	function($scope, $http, $routeParams){
-		var customerID = $routeParams.id;
-		$scope.customer = {};
-
-		$http.get(
-				"/customers/" + customerID + ".json"
-			).then(function(response){ //on success
-				$scope.customer = response.data;
-			},function(response){ //on failure
-				alert("The problem occured " + response.status);
-			}
-		);
-	}
+			["$scope", "$routeParams", "$resource",
+	function($scope, $routeParams, $resource){
+			var customerID = $routeParams.id;
+			var Customer = $resource('/customers/:customerID.json')
+			$scope.customer = Customer.get({"customerID": customerID})
+		}
 ]);
