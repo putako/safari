@@ -71,3 +71,11 @@ app.controller("CustomerDetailController",
 			$scope.customer = Customer.get({"customerID": customerID})
 		}
 ]);
+
+app.controller("CustomerCreditCardController",
+				["$scope", "$resource",
+		function($scope, $resource){
+			var CreditCardInfo = $resource('/fake_billing.json')
+			$scope.creditCard = CreditCardInfo.get({ "cardholder_id": 1234}) //change this hardcoded value to dynamic later
+		}
+]);

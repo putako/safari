@@ -90,7 +90,7 @@
 	</div>
 
 	<div class="col-md-6">
-		<article class="panel panel-default">
+		<article class="panel panel-default billing-info">
 			<header class="panel-heading">
 				<h1>Billing Info</h1>
 				<h2 class="h4">Billing Address</h2>
@@ -130,24 +130,23 @@
 						</div>
 					</div>
 				</div>
-
-				<h2>Payment Info</h2>
-				<div class="row">
-					<div class="col-md-7">
-						<p class="h4">
-							****-****-****-1234
-							<span class="label label-success">VISA</span>
-						</p>
-						<p>
-							<label>Expires:</label> 04/19
-						</p>
+				<article ng-controller="CustomerCreditCardController">
+					<h2>Payment Info</h2>
+					<div class="row">
+						<div class="col-md-7">
+							<p class="h4">
+								****-****-****-{{ creditCard.lastFour }}
+								<span class="label label-success">{{ creditCard.cardType }} </span>
+							</p>
+							<p>
+								<label>Expires:</label> {{creditCard.expirationMonth}}/{{creditCard.expiration.Year}}
+							</p>
+						</div>
+						<div class="col-md-5 text-right">
+							<a href="{{creditCard.detailsLink}}" class="btn btn-lg btn-default">View Details...</a>
+						</div>
 					</div>
-					<div class="col-md-5 text-right">
-						<button class="btn btn-lg btn-default">
-							View Details...
-						</button>
-					</div>
-				</div>
+				</article>
 			</section>
 			<footer class="panel-footer"></footer>
 		</article>
