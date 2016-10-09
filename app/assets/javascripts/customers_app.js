@@ -66,9 +66,9 @@ app.controller("CustomerSearchController",[
 app.controller("CustomerDetailController",
 			["$scope", "$routeParams", "$resource",
 	function($scope, $routeParams, $resource){
-			var customerID = $routeParams.id;
-			var Customer = $resource('/customers/:customerID.json')
-			$scope.customer = Customer.get({"customerID": customerID})
+			$scope.customerId = $routeParams.id;
+			var Customer = $resource('/customers/:customerId.json')
+			$scope.customer = Customer.get({"customerId": $scope.customerId})
 		}
 ]);
 
@@ -76,6 +76,11 @@ app.controller("CustomerCreditCardController",
 				["$scope", "$resource",
 		function($scope, $resource){
 			var CreditCardInfo = $resource('/fake_billing.json')
-			$scope.creditCard = CreditCardInfo.get({ "cardholder_id": 1234}) //change this hardcoded value to dynamic later
+			//$scope.creditCard = CreditCardInfo.get({ "cardholder_id": 1234}) //change this hardcoded value to dynamic later
+			$scope.setCardholderId = function(cardholderId){
+				$scope.creditCard = CreditCardInfo.get({
+					"cardholder_id": cardholderId
+				})
+			}
 		}
 ]);

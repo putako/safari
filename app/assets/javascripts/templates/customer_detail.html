@@ -130,7 +130,8 @@
 						</div>
 					</div>
 				</div>
-				<article ng-controller="CustomerCreditCardController">
+				<article ng-controller="CustomerCreditCardController"
+						 ng-init="setCardholderId(customerId)">
 					<h2>Payment Info</h2>
 					<div class="row">
 						<div ng-if="!creditCard.$resolved">
